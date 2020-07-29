@@ -10,17 +10,12 @@ const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 
 const PORT = process.env.PORT;
-const DB_USER = process.env.DB_USER;
-const DB_PASSWORD = process.env.DB_PASSWORD;
-const DB_DATABASE = process.env.DB_DATABASE;
 
 const db = knex({
   client: 'pg',
   connection: {
-    host : 'postgresql-curved-56381',
-    user : DB_USER,
-    password : DB_PASSWORD,
-    database : DB_DATABASE
+    host : process.env.DATABASE_URL,
+    ssl: true
   }
 });
 
